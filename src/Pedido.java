@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.io.File;
 
 public class Pedido {
     public int numItems, numPedido;
@@ -16,17 +15,13 @@ public class Pedido {
         int[] lista = new int[numItems];
 
         for (int i = 0; i < numItems; i++) {
-            int item = rand.nextInt(randMax + 1);
+            int item = rand.nextInt(randMax) + 1;
             lista[i] = item;
         }
 
         this.listaItems = lista;
 
         return lista;
-    }
-
-    public void generarArchivo()    {
-        // generar archivo
     }
 
     public int getNumItems() {

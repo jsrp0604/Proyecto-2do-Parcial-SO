@@ -24,6 +24,7 @@ public class graficoAlmacen {
         int nSum = 6;   // Numero que se irá sumando 
 
         for (int i = 0; i < filas; i++) {
+            // Se crea una matriz de enteros como referencia para la matriz de bloques
             if (i >= 2 && i <= 7)   {
                 matriz[i] = new int[]{x, 0, 0, x + nSum, x + nSum * 2, 0, 0, x + nSum * 3, x + nSum * 4, 0, 0, x + nSum * 5, 
                                         x + nSum * 6, 0, 0, x + nSum * 7, x + nSum * 8, 0, 0, x + nSum * 9};  
@@ -97,11 +98,12 @@ public class graficoAlmacen {
         Random rand = new Random();
         Pedido[] listaPedidos = new Pedido[numPedidos];
         
+        // Rango de items permitidos en el carrito
         int minItems = 10, maxItems = 15;
 
         for (int i = 0; i < numPedidos; i++) {
             int numItems = rand.nextInt(maxItems - minItems + 1) + minItems;
-            Pedido pedido = new Pedido(numItems, i + 1);
+            Pedido pedido = new Pedido(numItems, i + 1); // i + 1 representa el número del pedido
             listaPedidos[i] = pedido;
             pedido.generarListaItems();
         }   
@@ -110,7 +112,7 @@ public class graficoAlmacen {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        // Definicion tamaño supermercado
+        // Definicion tamaño matriz del almacen
         int filas = 10, columnas = 20;
         Bloque[][] matriz = crearMatriz(filas, columnas);
         graficoAlmacen almacen = new graficoAlmacen();
@@ -123,9 +125,11 @@ public class graficoAlmacen {
                 String nombreArchivo = String.format("Pedido #%d.txt", pedido.getNumPedido());
                 File archivo = new File(nombreArchivo);
                 if (archivo.createNewFile()) {
+                    // Se escribe en cada archivo creado con un Buffered Writer
                     FileWriter writer = new FileWriter(nombreArchivo);
                     BufferedWriter buffWriter = new BufferedWriter(writer);
                     
+                    // Se accede a la listaItems de cada pedido para generar el archivo
                     for (int item : pedido.getListaItems()) {
                         buffWriter.write("Item #" + item + "\n");
                     }                    
