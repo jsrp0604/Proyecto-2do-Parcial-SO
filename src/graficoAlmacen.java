@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,6 +18,7 @@ import java.util.Random;
 public class graficoAlmacen {
     
     public static Bloque[][] crearMatriz(int filas, int columnas) {
+
         int[][] matriz = new int[filas][columnas];
         Bloque[][] matrizBloques = new Bloque[filas][columnas];
         
@@ -43,6 +45,12 @@ public class graficoAlmacen {
 
     }
     
+    public static void imprimirMatriz(Bloque[][] matrizBloques)    {
+        for (Bloque[] fila : matrizBloques) {
+            System.out.println(Arrays.toString(fila));
+        }
+    }
+
     private void initializeWindow(Bloque[][] matriz) {
         JFrame mainFrame = new JFrame("Pedidos Almacen");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +107,7 @@ public class graficoAlmacen {
         Pedido[] listaPedidos = new Pedido[numPedidos];
         
         // Rango de items permitidos en el carrito
-        int minItems = 10, maxItems = 15;
+        int minItems = 5, maxItems = 10;
 
         for (int i = 0; i < numPedidos; i++) {
             int numItems = rand.nextInt(maxItems - minItems + 1) + minItems;
@@ -115,6 +123,7 @@ public class graficoAlmacen {
         // Definicion tamaño matriz del almacen
         int filas = 10, columnas = 20;
         Bloque[][] matriz = crearMatriz(filas, columnas);
+        imprimirMatriz(matriz);
         graficoAlmacen almacen = new graficoAlmacen();
         almacen.initializeWindow(matriz);
 
