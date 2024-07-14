@@ -1,8 +1,11 @@
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Pedido {
     public int numItems, numPedido;
     public int[] listaItems;
+    public LinkedList<Integer> listaLinked = new LinkedList<>();
     
     public Pedido(int numItems, int numPedido) {
         this.numItems = numItems;
@@ -19,7 +22,12 @@ public class Pedido {
             lista[i] = item;
         }
 
+        Arrays.sort(lista);
         this.listaItems = lista;
+
+        for (int i : lista) {
+            listaLinked.add(i);
+        }
 
         return lista;
     }
@@ -36,6 +44,10 @@ public class Pedido {
         return listaItems;
     }
 
+    public LinkedList<Integer> getListaLinked() {
+        return listaLinked;
+    }
+
     public void setNumItems(int numItems) {
         this.numItems = numItems;
     }
@@ -46,5 +58,9 @@ public class Pedido {
 
     public void setListaItems(int[] listaItems) {
         this.listaItems = listaItems;
+    }
+
+    public void setListaLinked(LinkedList<Integer> listaLinked) {
+        this.listaLinked = listaLinked;
     }
 }
