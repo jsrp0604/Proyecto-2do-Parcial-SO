@@ -1,6 +1,6 @@
 public class Bloque {
-    public int numItem;
-    public boolean enPedido;
+    private int numItem;
+    private boolean enPedido;
 
     public Bloque(int numItem) {
         this.numItem = numItem;

@@ -3,18 +3,21 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Pedido {
-    public int numItems, numPedido;
-    public int[] listaItems;
-    public LinkedList<Integer> listaLinked = new LinkedList<>();
-    
+    private int numItems;
+    private int numPedido;
+    private int[] listaItems;
+    private LinkedList<Integer> listaLinked = new LinkedList<>();
+    private int distance;
+    private int time;
+
     public Pedido(int numItems, int numPedido) {
         this.numItems = numItems;
         this.numPedido = numPedido;
     }
 
-    public int[] generarListaItems()   {
+    public int[] generarListaItems() {
         Random rand = new Random();
-        int randMax = 59; // 59 porque se sumará uno en la generacion al azar (para evitar un item #0)
+        int randMax = 59; 
         int[] lista = new int[numItems];
 
         for (int i = 0; i < numItems; i++) {
@@ -62,5 +65,21 @@ public class Pedido {
 
     public void setListaLinked(LinkedList<Integer> listaLinked) {
         this.listaLinked = listaLinked;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }
